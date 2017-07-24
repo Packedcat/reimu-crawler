@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
+from scrapy.loader import ItemLoader
+from crawler.items import ImageItem
 
 
 class QuotesSpider(scrapy.Spider):
