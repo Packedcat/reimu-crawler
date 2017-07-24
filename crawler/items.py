@@ -8,7 +8,15 @@
 import scrapy
 
 
-class TutorialItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class ArticleItem(scrapy.Item):
+
+    title = scrapy.Field()
+    image = scrapy.Field()
+    image_urls = scrapy.Field()
+
+
+class ImageItem(scrapy.Item):
+
+    images = scrapy.Field()
+    image_urls = scrapy.Field()
+    image_paths = scrapy.Field()
