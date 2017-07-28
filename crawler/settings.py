@@ -73,7 +73,7 @@ ITEM_PIPELINES = {
     # 'crawler.pipelines.DuplicatesPipeline': 800,
 }
 
-IMAGES_STORE = '/Users/Kitsch/Downloads/data/'
+IMAGES_STORE = 'E:\crawl_data'
 IMAGES_URLS_FIELD = 'image_urls'
 IMAGES_RESULT_FIELD = 'images'
 
