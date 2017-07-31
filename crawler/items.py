@@ -11,8 +11,8 @@ import scrapy
 class ArticleItem(scrapy.Item):
 
     title = scrapy.Field()
-    image = scrapy.Field()
     image_urls = scrapy.Field()
+    target = scrapy.Field()
 
 
 class ImageItem(scrapy.Item):
