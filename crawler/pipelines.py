@@ -5,6 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
+import os
 import json
 import scrapy
 from scrapy.pipelines.images import ImagesPipeline
@@ -48,6 +49,14 @@ class CaptionPipeline(ImagesPipeline):
         image_paths = [x['path'] for ok, x in results if ok]
         if not image_paths:
             raise DropItem("Item contains no images")
+        path = '%s/%s' % (self.store.basedir, item['title'][0])
+        if not os.path.exists(path):
+            os.makedirs(path)
+        for image_path in image_paths:
+            src_dir = '%s/%s' % (self.store.basedir, image_path)
+            dst_dir = '%s/%s' % (path, image_path[4:])
+            os.rename(src_dir, dst_dir)
+        # TODO splice path if have else pipeline
         item['image_paths'] = image_paths
         return item
 

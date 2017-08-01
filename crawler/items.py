@@ -10,9 +10,12 @@ import scrapy
 
 class ArticleItem(scrapy.Item):
 
+    article_id = scrapy.Field()
     title = scrapy.Field()
-    image_urls = scrapy.Field()
     target = scrapy.Field()
+    images = scrapy.Field()
+    image_urls = scrapy.Field()
+    image_paths = scrapy.Field()
 
 
 class ImageItem(scrapy.Item):

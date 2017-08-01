@@ -16,6 +16,7 @@ NEWSPIDER_MODULE = 'crawler.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.37'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -69,13 +70,14 @@ ROBOTSTXT_OBEY = True
 
 ITEM_PIPELINES = {
     'crawler.pipelines.CaptionPipeline': 1,
-    # 'crawler.pipelines.PricePipeline': 300,
+    'crawler.pipelines.JsonWriterPipeline': 300,
     # 'crawler.pipelines.DuplicatesPipeline': 800,
 }
 
-IMAGES_STORE = 'E:\crawl_data'
+IMAGES_STORE = 'path/to/store'
 IMAGES_URLS_FIELD = 'image_urls'
 IMAGES_RESULT_FIELD = 'images'
+MEDIA_ALLOW_REDIRECTS = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
