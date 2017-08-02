@@ -7,10 +7,8 @@
 
 import os
 import scrapy
-import hashlib
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
-from urllib2 import quote
 
 
 class CaptionPipeline(ImagesPipeline):
@@ -60,29 +58,3 @@ class DuplicatesPipeline(object):
         else:
             self.ids_seen.add(item['id'])
             return item
-
-
-class ScreenshotPipeline(object):
-
-    SPLASH_URL = 'http://localhost:8050/render.png?url={}'
-
-    def process_item(self, item, spider):
-        encoded_item_url = quote(item['url'][0])
-        screenshot_url = self.SPLASH_URL.format(encoded_item_url)
-        request = scrapy.Request(screenshot_url)
-        dfd = spider.crawler.engine.download(request, spider)
-        dfd.addBoth(self.return_item, item)
-        return dfd
-
-    def return_item(self, response, item):
-        if response.status != 200:
-            return item
-
-        url = item['url']
-        url_hash = hashlib.md5(url.encode('utf8')).hexdigest()
-        filename = '{}.png'.format(url_hash)
-        with open(filename, 'wb') as f:
-            f.write(response.body)
-
-        item['screenshot_filename'] = filename
-        return item
