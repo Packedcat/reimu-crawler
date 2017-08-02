@@ -5,7 +5,7 @@ from scrapy.loader import ItemLoader
 from crawler.items import ArticleItem
 
 
-class QuotesSpider(scrapy.Spider):
+class ReimuSpider(scrapy.Spider):
 
     name = 'reimu'
     allow_domains = ['blog.reimu.net']
@@ -32,6 +32,7 @@ class QuotesSpider(scrapy.Spider):
         al = ItemLoader(item=ArticleItem(), response=response)
         index = response.url[::-1].index('/')
         article_id = response.url[-index:]
+        al.add_value('url', response.url)
         al.add_value('article_id', article_id)
         al.add_css('title', 'h1.entry-title::text')
         al.add_css('target', 'div.entry-content pre')

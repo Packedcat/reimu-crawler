@@ -20,6 +20,7 @@ USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_7) AppleWebKit/537.36
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+LOG_FILE = 'log.txt'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -69,8 +70,8 @@ ROBOTSTXT_OBEY = True
 #}
 
 ITEM_PIPELINES = {
-    'crawler.pipelines.CaptionPipeline': 1,
-    'crawler.pipelines.JsonWriterPipeline': 300,
+    'crawler.pipelines.DescriptionPipeline': 1,
+    'crawler.pipelines.CaptionPipeline': 300,
     # 'crawler.pipelines.DuplicatesPipeline': 800,
 }
 

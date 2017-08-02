@@ -10,6 +10,7 @@ import scrapy
 
 class ArticleItem(scrapy.Item):
 
+    url = scrapy.Field()
     article_id = scrapy.Field()
     title = scrapy.Field()
     target = scrapy.Field()
