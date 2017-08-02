@@ -42,7 +42,7 @@ class DescriptionPipeline(object):
             os.makedirs(save_path)
         content = item.get('target')
         if content:
-            with open('%s/link.txt' % save_path, 'w') as f:
+            with open('%s/link.txt' % save_path, 'wb') as f:
                 f.write(content[0].encode('utf-8'))
         return item
 

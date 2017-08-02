@@ -2,10 +2,12 @@
 
 > https://blog.reimu.net/
 
-### use
+### Use
 
-1. change path in `settings.py`
+1. install `scrapy` and `Pillow`
 
-2. install `Pillow`
+2. change path in `settings.py`
 
-3. `scrapy crawl reimu`
+3. path to project
+
+4. `$ scrapy crawl reimu`
